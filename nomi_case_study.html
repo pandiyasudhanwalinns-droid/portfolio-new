@@ -126,11 +126,29 @@
   .strip-grid div{font-size:14px;color:var(--ink);line-height:1.45;}
   .strip-grid b{color:var(--pink);}
 
+  /* research gallery */
+  .research-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 24px;}
+  .research-item{min-width:0;}
+  .research-item.featured{grid-column:1/-1;}
+  .research-media{display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);}
+  .research-item.featured .research-media{aspect-ratio:16/9;}
+  .research-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .45s cubic-bezier(.2,.7,.2,1);}
+  .research-media:hover img{transform:scale(1.015);}
+  .research-caption{display:grid;grid-template-columns:auto 1fr;gap:12px;margin-top:16px;align-items:start;}
+  .research-index{font-family:var(--serif);font-style:italic;color:var(--pink);font-size:14px;line-height:1.35;}
+  .research-copy h3{font-size:17px;margin-bottom:5px;}
+  .research-copy p{max-width:52ch;color:var(--body);font-size:13.5px;line-height:1.5;}
+
   /* HMW banner */
   .hmw{background:var(--ink);border-radius:var(--r);padding:32px 36px;display:flex;gap:22px;align-items:flex-start;margin-bottom:40px;}
   .hmw .qmark{font-family:var(--serif);font-size:54px;line-height:.7;color:var(--pink);flex:none;}
   .hmw .k{color:var(--pink);font-weight:700;font-size:11px;letter-spacing:.14em;display:block;margin-bottom:8px;}
   .hmw em{font-family:var(--serif);font-style:italic;color:#fff;font-size:19px;line-height:1.4;}
+
+  /* strategy visual */
+  .strategy-visual{margin:-8px 0 40px;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+  .strategy-visual a{display:block;}
+  .strategy-visual img{display:block;width:100%;height:auto;border-radius:12px;}
 
   /* flow */
   .flowlabel{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--faint);margin:38px 0 16px;}
@@ -146,6 +164,14 @@
   .tool-logo{width:22px;height:22px;display:block;object-fit:contain;border-radius:6px;flex:none;}
   .tool-logo.figma-logo{border-radius:4px;}
   .tool-logo.claude-logo{border-radius:50%;}
+
+  /* after section links */
+  .after-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .after-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 18px;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font-size:13.5px;font-weight:700;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+  .after-link.primary{border-color:var(--pink);background:var(--pink);color:var(--white);}
+  .after-link:hover{transform:translateY(-2px);border-color:rgba(230,17,110,.38);box-shadow:0 10px 24px rgba(80,80,100,.1);}
+  .after-link .ic,.after-link img{width:18px;height:18px;flex:none;}
+  .after-link img{object-fit:contain;border-radius:3px;}
 
   /* comparison */
   .compare{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
@@ -196,6 +222,9 @@
     .hero-grid,.split,.split.lean,.impact-grid{grid-template-columns:1fr;gap:36px;}
     .hero-visual{order:-1}.hero-visual img{width:100%}
     .g3,.strip-grid{grid-template-columns:1fr;}
+    .research-grid{grid-template-columns:1fr;gap:30px;}
+    .research-item.featured{grid-column:auto;}
+    .research-item.featured .research-media{aspect-ratio:4/3;}
     .stats{grid-template-columns:repeat(2,1fr);}
     .compare{grid-template-columns:1fr;}.compare .mid{transform:rotate(90deg);margin:0 auto;}
     .compchips{grid-template-columns:repeat(2,1fr);}
@@ -352,12 +381,37 @@
       <h2 class="reveal d1">Listening Before Redesigning</h2>
       <p class="lead reveal d2">Before touching the UI, research uncovered how users actually interacted with the dashboard.</p>
     </div>
-    <div class="grid" style="grid-template-columns:repeat(5,1fr)">
-      <div class="card tline reveal d1"><div class="chip-ic"><svg class="ic"><use href="#i-chat"/></svg></div><h3 style="font-size:15px">User interviews</h3><p>UK-based sessions via Microsoft Teams.</p></div>
-      <div class="card tline reveal d1"><div class="chip-ic"><svg class="ic"><use href="#i-fire"/></svg></div><h3 style="font-size:15px">Hotjar heatmaps</h3><p>Mapped attention, clicks &amp; ignored zones.</p></div>
-      <div class="card tline reveal d2"><div class="chip-ic"><svg class="ic"><use href="#i-clock"/></svg></div><h3 style="font-size:15px">Time-on-task</h3><p>Pinpointed slow steps in key tasks.</p></div>
-      <div class="card tline reveal d3"><div class="chip-ic"><svg class="ic"><use href="#i-chart"/></svg></div><h3 style="font-size:15px">Competitor research</h3><p>Benchmarked SaaS patterns with Perplexity.</p></div>
-      <div class="card tline reveal d4"><div class="chip-ic"><svg class="ic"><use href="#i-users"/></svg></div><h3 style="font-size:15px">Internal alignment</h3><p>Worked with product &amp; dev teams.</p></div>
+    <div class="research-grid">
+      <article class="research-item featured reveal d1">
+        <a class="research-media" href="https://postimg.cc/1fFKZ2F3" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.postimg.cc/2rrpRzsc/Chat-GPT-Image-Sep-25-2026-09-20-43-PM.png" alt="Remote user interview focused on Nomi dashboard usability">
+        </a>
+        <div class="research-caption"><span class="research-index">01</span><div class="research-copy"><h3>User interviews</h3><p>UK-based remote sessions revealed what users scanned first and where confidence dropped.</p></div></div>
+      </article>
+      <article class="research-item reveal d1">
+        <a class="research-media" href="https://postimg.cc/R3S1K0Dd" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.postimg.cc/QjYvTcFd/download.png" alt="Hotjar heatmap showing attention and click activity on the Nomi payroll screen">
+        </a>
+        <div class="research-caption"><span class="research-index">02</span><div class="research-copy"><h3>Hotjar heatmaps</h3><p>Attention and click behavior exposed overlooked actions and crowded zones.</p></div></div>
+      </article>
+      <article class="research-item reveal d2">
+        <a class="research-media" href="https://postimg.cc/ygWFpbB6" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.postimg.cc/2zPJHmd0/Chat-GPT-Image-Sep-25-2026-09-39-31-PM.png" alt="Time-on-task analysis for key payroll workflow steps">
+        </a>
+        <div class="research-caption"><span class="research-index">03</span><div class="research-copy"><h3>Time-on-task</h3><p>Timed payroll flows pinpointed reviewing deductions as the slowest step.</p></div></div>
+      </article>
+      <article class="research-item reveal d2">
+        <a class="research-media" href="https://postimg.cc/yWgmFtv0" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.postimg.cc/pxM4zWLv/Chat-GPT-Image-Sep-25-2026-09-42-36-PM.png" alt="Competitor analysis of IRIS, Sage, and Xero payroll experiences">
+        </a>
+        <div class="research-caption"><span class="research-index">04</span><div class="research-copy"><h3>Competitor research</h3><p>IRIS, Sage, and Xero benchmarks clarified patterns to keep and gaps to avoid.</p></div></div>
+      </article>
+      <article class="research-item reveal d3">
+        <a class="research-media" href="https://postimg.cc/9ryykT3m" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.postimg.cc/Dn2NpxGB/Chat-GPT-Image-Sep-25-2026-09-45-49-PM.png" alt="Product designer aligning the Nomi dashboard implementation with developers">
+        </a>
+        <div class="research-caption"><span class="research-index">05</span><div class="research-copy"><h3>Internal alignment</h3><p>Design and engineering aligned states, edge cases, responsive rules, and handoff details.</p></div></div>
+      </article>
     </div>
     <div class="strip reveal d2">
       <div class="k">WHAT WE LEARNED</div>
@@ -377,6 +431,11 @@
       <div class="eyebrow reveal"><span class="dash"></span><span><span class="sectnum">05</span> &nbsp;·&nbsp; Strategy</span></div>
       <h2 class="reveal d1">Turning Insights into Design Decisions</h2>
     </div>
+    <figure class="strategy-visual reveal d1">
+      <a href="https://postimg.cc/9D65Qv8P" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.postimg.cc/Gp2cqRvf/Screenshot-2026-09-25-214940.png" alt="Nomi dashboard strategy exploration">
+      </a>
+    </figure>
     <div class="hmw reveal">
       <span class="qmark">“</span>
       <div><span class="k">HOW MIGHT WE</span><em>redesign the Nomi dashboard so users understand key financial performance faster, reduce cognitive effort, and act with more confidence?</em></div>
@@ -407,6 +466,16 @@
     <div class="sec-head">
       <div class="eyebrow reveal"><span class="dash"></span><span><span class="sectnum">06</span> &nbsp;·&nbsp; After</span></div>
       <h2 class="reveal d1">Calm, Clear, Actionable</h2>
+      <div class="after-actions reveal d2">
+        <a class="after-link primary" href="https://www.figma.com/make/XrmoafMlyrJQXScI31HO4g/Recreate-Screen-Design?fullscreen=1&amp;t=E2dZ6b7cYy4mtru7-1&amp;code-node-id=0-6" target="_blank" rel="noopener noreferrer">
+          <svg class="ic" aria-hidden="true"><use href="#i-code"/></svg>
+          <span>Open Functional Prototype</span>
+        </a>
+        <a class="after-link" href="https://www.figma.com/design/NKblSmOt9j5z94ncsa5kCo/Nomi-Payroll-Dashboard?node-id=0-1&amp;t=ez9harZ4on0971n7-1" target="_blank" rel="noopener noreferrer">
+          <img src="https://vectorseek.com/wp-content/uploads/2023/07/Figma-Logo-Png-Vector.svg-.png?v=portfolio-figma" alt="">
+          <span>View Figma Design</span>
+        </a>
+      </div>
     </div>
     <div class="split lean">
       <div class="reveal">
@@ -425,9 +494,9 @@
         </div>
         <div class="labeltop" style="margin-top:26px">Tools</div>
         <div class="tools">
-          <span class="tool"><img class="tool-logo figma-logo" src="https://vectorseek.com/wp-content/uploads/2023/07/Figma-Logo-Png-Vector.svg-.png?v=portfolio-figma" alt="">Figma</span>
-          <span class="tool"><img class="tool-logo claude-logo" src="https://images.seeklogo.com/logo-png/55/2/claude-logo-png_seeklogo-554534.png?v=portfolio-claude" alt="">Claude Design</span>
-          <span class="tool"><svg class="ic"><use href="#i-code"/></svg>HTML Prototype</span>
+          <span class="tool"><img class="tool-logo figma-logo" src="https://vectorseek.com/wp-content/uploads/2023/07/Figma-Logo-Png-Vector.svg-.png?v=portfolio-figma" alt="">Figma Make</span>
+          <span class="tool"><img class="tool-logo claude-logo" src="https://images.seeklogo.com/logo-png/55/2/claude-logo-png_seeklogo-554534.png?v=portfolio-claude" alt="">Claude</span>
+          <span class="tool"><svg class="ic"><use href="#i-code"/></svg>Functional Prototype</span>
         </div>
       </div>
     </div>
